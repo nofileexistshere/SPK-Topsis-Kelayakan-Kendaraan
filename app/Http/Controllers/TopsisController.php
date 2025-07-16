@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Barryvdh\DomPDF\Facade\PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Services\TopsisService;
 use App\Http\Services\KriteriaService;
 use App\Http\Services\PenilaianService;
