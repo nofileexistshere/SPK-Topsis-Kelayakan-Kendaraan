@@ -17,10 +17,10 @@ export default {
                 handjet: ['Handjet'],
             },
             colors: {
-                greenPrimary: "#617A55",
-                greenSecondary: "#A4D0A4",
-                backgroundPrimary: "#F6FFDE",
-                backgroundSecondary: "#F7E1AE",
+                greenPrimary: "#000000",
+                greenSecondary: "#CD5656",
+                backgroundPrimary: "#E55050 ",
+                backgroundSecondary: "#AF3E3E",
                 dark: "#1B1B1B",
             }
         },

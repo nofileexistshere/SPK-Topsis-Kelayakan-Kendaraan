@@ -21,7 +21,7 @@
 
         {{-- Data Master --}}
         <li class="w-full mt-6">
-            <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Master</h6>
+            <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs text-black">Master</h6>
         </li>
 
         <li class="mt-0.5 w-full">
@@ -51,7 +51,7 @@
 
         {{-- Data TOPSIS --}}
         <li class="w-full mt-6">
-            <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">TOPSIS</h6>
+            <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs text-black">TOPSIS</h6>
         </li>
 
         <li class="mt-0.5 w-full">

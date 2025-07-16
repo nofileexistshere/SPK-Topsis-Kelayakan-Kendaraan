@@ -116,11 +116,11 @@
         <div class="w-full max-w-full px-3 lg:w-8/12 lg:flex-none">
             <div
                 class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border p-4">
-                <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('{{ asset('img/alena-aenami-rooflinesgirl.jpg') }}')">
-                    <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80"></span>
+                <div class="relative h-full overflow-hidden bg-cover rounded-xl">
+                    <span class="absolute top-0 left-0 w-full h-full"></span>
                     <div class="relative z-10 flex flex-col flex-auto h-full p-4">
-                        <h5 class="pt-2 mb-6 font-bold text-white">Kegunaan TOPSIS</h5>
-                        <ul class="ml-3 text-white" style="list-style-type: square;">
+                        <h5 class="pt-2 mb-6 font-bold text-black">Kegunaan TOPSIS</h5>
+                        <ul class="ml-3 text-black" style="list-style-type: square;">
                             <li>Konsepnya yang sederhana dan mudahdipahami.</li>
                             <li>Komputasinya efisien.</li>
                             <li>Memiliki kemampuan yang jarang dimiliki metode lain contohnya mengukur kinerja relatif dari alternatif-alternatif keputusan dalam bentuk yang sederhana. Dapat digunakan metode pengambil keputusan yang lebih cepat.</li>
@@ -137,7 +137,7 @@
             <div
                 class="border-black/12.5 shadow-soft-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
                 <div class="flex-auto p-4">
-                    <div class="py-4 pr-1 mb-4 bg-gradient-to-tl from-gray-900 to-slate-800 rounded-xl">
+                    <div class="py-4 pr-1 mb-4 bg-black rounded-xl">
                         <div>
                             <canvas id="chart-bars" height="170"></canvas>
                         </div>
@@ -155,7 +155,7 @@
                             @foreach ($kriteria as $item)
                                 <div class="flex-none w-1/4 max-w-full py-4 pl-0 pr-3 mt-0">
                                     <div class="flex mb-2">
-                                        <div class="flex items-center justify-center w-5 h-5 mr-2 text-center bg-center rounded fill-current shadow-soft-2xl bg-gradient-to-tl from-purple-700 to-pink-500 text-neutral-900">
+                                        <div class="flex items-center justify-center w-5 h-5 mr-2 text-center bg-center rounded fill-current shadow-soft-2xl bg-gradient-to-tl from-red-700 to-pink-500 text-neutral-900">
                                             <i class="ri-table-fill text-white text-sm"></i>
                                         </div>
                                         <p class="mt-1 mb-0 leading-tight text-xs">Kriteria {{ $item->id }}: <span class="font-semibold">{{ $item->nama }}</span></p>
@@ -175,7 +175,7 @@
         <div class="w-full max-w-full px-3 mt-0 lg:w-7/12 lg:flex-none">
             <div class="border-black/12.5 shadow-soft-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
                 <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
-                    <h6>Hasil Perhitungan TOPSIS</h6>
+                    <h6 class="text-black">Hasil Perhitungan TOPSIS</h6>
                     <p class="leading-normal text-sm flex flex-col">
                         <span class="font-semibold">
                             X <i class="ri-arrow-right-line"></i> Alternatif
@@ -217,7 +217,7 @@
                 borderWidth: 0,
                 borderRadius: 4,
                 borderSkipped: false,
-                backgroundColor: "#fff",
+                backgroundColor: "#E55050",
                 data: kriteriaBobot,
                 maxBarThickness: 6,
             },
@@ -272,24 +272,22 @@
         },
         });
 
-        // end chart 1
-
     </script>
 
     <script>
         var ctx2 = document.getElementById("chart-line").getContext("2d");
 
+        // Ubah warna gradasi utama ke E55050
         var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
+        gradientStroke1.addColorStop(1, "rgba(229, 80, 80, 1)");
+        gradientStroke1.addColorStop(0.2, "rgba(229, 80, 80, 0.1)");
+        gradientStroke1.addColorStop(0, "rgba(229, 80, 80, 0)");
 
-        gradientStroke1.addColorStop(1, "rgba(164, 208,164, 1)");
-        gradientStroke1.addColorStop(0.2, "rgba(164, 208,164, 0.1)");
-        gradientStroke1.addColorStop(0, "rgba(164, 208,164, 0)"); //purple colors
-
+        // Optional: gradientStroke2 kalau tidak dipakai bisa dihapus
         var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
-
         gradientStroke2.addColorStop(1, "rgba(20,23,39,0.2)");
         gradientStroke2.addColorStop(0.2, "rgba(72,72,176,0.0)");
-        gradientStroke2.addColorStop(0, "rgba(20,23,39,0)"); //purple colors
+        gradientStroke2.addColorStop(0, "rgba(20,23,39,0)");
 
         let alternatif = [];
         let nilai = [];
@@ -299,82 +297,77 @@
         @endforeach
 
         new Chart(ctx2, {
-        type: "line",
-        data: {
-            labels: alternatif,
-            datasets: [
-            {
-                label: "Nilai",
-                tension: 0.4,
-                borderWidth: 0,
-                pointRadius: 0,
-                borderColor: "#617A55",
-                borderWidth: 3,
-                backgroundColor: gradientStroke1,
-                fill: true,
-                data: nilai,
-                maxBarThickness: 6,
+            type: "line",
+            data: {
+                labels: alternatif,
+                datasets: [{
+                    label: "Nilai",
+                    tension: 0.4,
+                    borderWidth: 3,
+                    pointRadius: 0,
+                    borderColor: "#E55050", 
+                    backgroundColor: gradientStroke1, 
+                    fill: true,
+                    data: nilai,
+                    maxBarThickness: 6,
+                }],
             },
-            ],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-            legend: {
-                display: false,
-            },
-            },
-            interaction: {
-            intersect: false,
-            mode: "index",
-            },
-            scales: {
-            y: {
-                grid: {
-                drawBorder: false,
-                display: true,
-                drawOnChartArea: true,
-                drawTicks: false,
-                borderDash: [5, 5],
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
                 },
-                ticks: {
-                display: true,
-                padding: 10,
-                color: "#b2b9bf",
-                font: {
-                    size: 11,
-                    family: "Open Sans",
-                    style: "normal",
-                    lineHeight: 2,
+                interaction: {
+                    intersect: false,
+                    mode: "index",
                 },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                        },
+                        ticks: {
+                            display: true,
+                            padding: 10,
+                            color: "#000000",
+                            font: {
+                                size: 11,
+                                family: "Open Sans",
+                                style: "normal",
+                                lineHeight: 2,
+                            },
+                        },
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                        },
+                        ticks: {
+                            display: true,
+                            color: "#000000", 
+                            padding: 20,
+                            font: {
+                                size: 11,
+                                family: "Open Sans",
+                                style: "normal",
+                                lineHeight: 2,
+                            },
+                        },
+                    },
                 },
             },
-            x: {
-                grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
-                drawTicks: false,
-                borderDash: [5, 5],
-                },
-                ticks: {
-                display: true,
-                color: "#b2b9bf",
-                padding: 20,
-                font: {
-                    size: 11,
-                    family: "Open Sans",
-                    style: "normal",
-                    lineHeight: 2,
-                },
-                },
-            },
-            },
-        },
         });
-
-        // end chart 2
-
     </script>
+
 @endsection
