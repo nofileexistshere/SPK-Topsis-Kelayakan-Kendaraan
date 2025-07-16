@@ -173,6 +173,8 @@
             $('#tabel_data').DataTable({
                 responsive: true,
                 order: [],
+                select: false,
+                
             })
             .columns.adjust()
             .responsive.recalc();
