@@ -57,7 +57,7 @@ php artisan serve
 
 | Role  | Email            | Password |
 | ----- | ---------------- | -------- |
-| Admin | admin@telkom.com | password |
+| Admin | admin@telkom.com | 12345678 |
 
 ## 🖥️ Fitur Aplikasi
 
