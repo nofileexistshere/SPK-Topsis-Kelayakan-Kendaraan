@@ -27,7 +27,7 @@
                                     </td>
                                     @foreach ($data->where('alternatif_id', $item->alternatif_id) as $value)
                                         <th>
-                                            <span class="mr-2">@if ($value->subKriteria != null) {{ $value->subKriteria->nama }} @endif</span>
+                                            <span class="mr-2">@if ($value->subKriteria != null) {{ $value->subKriteria->nilai }} @endif</span>
                                         </th>
                                     @endforeach
                                 </tr>

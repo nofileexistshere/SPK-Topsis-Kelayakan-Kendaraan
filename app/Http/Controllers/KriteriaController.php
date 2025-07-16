@@ -25,7 +25,6 @@ class KriteriaController extends Controller
     $sumBobot = $this->kriteriaService->getSumBobot()->total_bobot;
 
     if ($data->last()) {
-        // Ambil nomor dari kode terakhir dan tambahkan 1
         $lastNumber = (int) substr($data->last()->kode, 1);
         $kode = "K" . ($lastNumber + 1);
     } else {
