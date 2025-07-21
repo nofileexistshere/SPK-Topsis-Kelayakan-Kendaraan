@@ -133,7 +133,7 @@
             {{-- Tabel Matriks Y --}}
             <div class="relative flex flex-col min-w-0 mb-5 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                 <div class="flex flex-row items-center justify-between p-6 pb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <h6>Matriks Y</h6>
+                    <h6>Matriks Normalisasi  Y</h6>
                 </div>
                 <div id='recipients' class="p-8 rounded shadow bg-white">
                     <table id="tabel_data_matriks_y" class="stripe hover" style="width:100%; padding-bottom: 1em;">
