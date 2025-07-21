@@ -5,11 +5,11 @@
         <div class="flex-none w-full max-w-full px-3">
             <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                 <div class="flex flex-row items-center justify-between p-6 pb-0 mb-4 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <h6>Tabel {{ $judul }}</h6>
+                    <h6>Tabel Kendaraan</h6>
                     <div>
                         <label for="add_button" class="cursor-pointer inline-block px-3 py-2 font-bold text-center text-white rounded-lg text-sm ease-soft-in shadow-soft-md bg-gradient-to-br from-greenPrimary to-greenPrimary/80 shadow-soft-md hover:shadow-soft-xs active:opacity-85 hover:scale-102 transition-all">
                             <i class="ri-add-fill"></i>
-                            Tambah {{ $judul }}
+                            Tambah Kendaraan
                         </label>
                         <label for="import_button" class="cursor-pointer inline-block px-3 py-2 font-bold text-center text-white rounded-lg text-sm ease-soft-in shadow-soft-md bg-gradient-to-br from-greenPrimary to-greenPrimary/80 shadow-soft-md hover:shadow-soft-xs active:opacity-85 hover:scale-102 transition-all">
                             <i class="ri-file-excel-line"></i>
@@ -49,7 +49,7 @@
             <div class="modal">
                 <div class="modal-box">
                     <form action="{{ route('objek.simpan') }}" method="post" enctype="multipart/form-data">
-                        <h3 class="font-bold text-lg">Tambah {{ $judul }}</h3>
+                        <h3 class="font-bold text-lg">Tambah Kendaraan</h3>
                             @csrf
                             <div class="form-control w-full max-w-xs">
                                 <label class="label">

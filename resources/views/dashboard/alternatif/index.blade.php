@@ -5,10 +5,10 @@
         <div class="flex-none w-full max-w-full px-3">
             <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                 <div class="flex flex-row items-center justify-between p-6 pb-0 mb-4 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <h6>Tabel {{ $judul }}</h6>
+                    <h6>Tabel Kelola Data Kendaraan</h6>
                     <label for="add_button" class="cursor-pointer inline-block px-3 py-2 font-bold text-center text-white rounded-lg text-sm ease-soft-in shadow-soft-md bg-gradient-to-br from-greenPrimary to-greenPrimary/80 shadow-soft-md hover:shadow-soft-xs active:opacity-85 hover:scale-102 transition-all">
                         <i class="ri-add-fill"></i>
-                        Tambah {{ $judul }}
+                        Tambah Data Kendaraan
                     </label>
                 </div>
                 <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">

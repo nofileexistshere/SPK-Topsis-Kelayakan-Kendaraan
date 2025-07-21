@@ -96,7 +96,7 @@
         </div>
     </div>
 
-    <!-- cards row 2 -->
+    <!-- cards row 2
     <div class="flex flex-wrap mt-6 -mx-3">
         <div class="w-full px-3 mb-6 lg:mb-0 lg:w-4/12 lg:flex-none">
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
@@ -129,7 +129,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- cards row 3 -->
     <div class="flex flex-wrap mt-6 -mx-3">
