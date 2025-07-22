@@ -94,7 +94,7 @@
                         <tbody>
                             <tr>
                                 @foreach ($matriksKeputusan as $item)
-                                    <td>{{ round($item->nilai, 2) }}</td>
+                                    <td>{{ round($item->nilai, 10) }}</td>
                                 @endforeach
                             </tr>
                         </tbody>
@@ -123,7 +123,7 @@
                                     <td>{{ $item->nama_objek }}</td>
                                     @foreach ($matriksNormalisasi->where('alternatif_id', $item->alternatif_id) as $value)
                                         <td>
-                                            {{ round($value->nilai, 2) }}
+                                            {{ round($value->nilai, 10) }}
                                         </td>
                                     @endforeach
                                 </tr>
@@ -154,7 +154,7 @@
                                     <td>{{ $item->nama_objek }}</td>
                                     @foreach ($matriksY->where('alternatif_id', $item->alternatif_id) as $value)
                                         <td>
-                                            {{ round($value->nilai, 3) }}
+                                            {{ round($value->nilai, 10) }}
                                         </td>
                                     @endforeach
                                 </tr>
@@ -173,27 +173,26 @@
                     <table id="tabel_data_ideal_positif" class="stripe hover" style="width:100%; padding-bottom: 1em;">
                         <thead>
                             <tr>
-                                <th>Nama</th>
+                                <th>Kriteria</th>
                                 @foreach ($idealPositif->unique('kriteria_id') as $item)
                                     <th>{{ $item->nama_kriteria }}</th>
                                 @endforeach
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($idealPositif->unique('alternatif_id') as $item)
-                                <tr>
-                                    <td>{{ $item->nama_objek }}</td>
-                                    @foreach ($idealPositif->where('alternatif_id', $item->alternatif_id) as $value)
-                                        <td>
-                                            {{ number_format($value->nilai, 6) }}
-                                        </td>
-                                    @endforeach
-                                </tr>
-                            @endforeach
+                            <tr>
+                                <td>A⁺</td>
+                                @foreach ($idealPositif->unique('kriteria_id') as $item)
+                                    <td>
+                                        {{ number_format($idealPositif->where('kriteria_id', $item->kriteria_id)->first()->nilai, 10) }}
+                                    </td>
+                                @endforeach
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+
 
             {{-- Tabel Ideal Negatif --}}
             <div class="relative flex flex-col min-w-0 mb-5 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
@@ -204,23 +203,21 @@
                     <table id="tabel_data_ideal_negatif" class="stripe hover" style="width:100%; padding-bottom: 1em;">
                         <thead>
                             <tr>
-                                <th>Nama</th>
+                                <th>Kriteria</th>
                                 @foreach ($idealNegatif->unique('kriteria_id') as $item)
                                     <th>{{ $item->nama_kriteria }}</th>
                                 @endforeach
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($idealNegatif->unique('alternatif_id') as $item)
-                                <tr>
-                                    <td>{{ $item->nama_objek }}</td>
-                                    @foreach ($idealNegatif->where('alternatif_id', $item->alternatif_id) as $value)
-                                        <td>
-                                            {{ number_format($value->nilai, 6) }}
-                                        </td>
-                                    @endforeach
-                                </tr>
-                            @endforeach
+                            <tr>
+                                <td>A⁻</td>
+                                @foreach ($idealNegatif->unique('kriteria_id') as $item)
+                                    <td>
+                                        {{ number_format($idealNegatif->where('kriteria_id', $item->kriteria_id)->first()->nilai, 10) }}
+                                    </td>
+                                @endforeach
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -243,7 +240,7 @@
                             @foreach ($solusiIdealPositif as $item)
                                 <tr>
                                     <td>{{ $item->nama_objek }}</td>
-                                    <td>{{ round($item->nilai, 3) }}</td>
+                                    <td>{{ round($item->nilai, 10) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -268,7 +265,7 @@
                             @foreach ($solusiIdealNegatif as $item)
                                 <tr>
                                     <td>{{ $item->nama_objek }}</td>
-                                    <td>{{ round($item->nilai, 3) }}</td>
+                                    <td>{{ round($item->nilai, 10) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -293,7 +290,7 @@
                             @foreach ($hasilTopsis as $item)
                                 <tr>
                                     <td>{{ $item->nama_objek }}</td>
-                                    <td>{{ round($item->nilai, 3) }}</td>
+                                    <td>{{ round($item->nilai, 10) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

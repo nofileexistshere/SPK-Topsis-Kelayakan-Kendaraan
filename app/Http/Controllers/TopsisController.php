@@ -190,37 +190,34 @@ class TopsisController extends Controller
     }
 
     public function hitungIdeal()
-    {
-        $solusiIdeal = $this->topsisServices->getMatriksY();
-        foreach ($solusiIdeal->unique('kriteria_id') as $item) {
-            $solusiIdealKriteria = $solusiIdeal->where('kriteria_id', $item->kriteria_id);
+{
+    $solusiIdeal = $this->topsisServices->getMatriksY();
 
-            $solusiIdealA = [];
-            foreach ($solusiIdealKriteria as $value) {
-                $solusiIdealA[] = $value->nilai;
-            }
-            $solusiIdealPositif = ['nilai' => max($solusiIdealA), 'kriteria_id' => $item->kriteria_id];
-            $solusiIdealNegatif = ['nilai' => min($solusiIdealA), 'kriteria_id' => $item->kriteria_id];
+    foreach ($solusiIdeal->unique('kriteria_id') as $item) {
+        $solusiIdealKriteria = $solusiIdeal->where('kriteria_id', $item->kriteria_id);
 
-            foreach ($solusiIdealKriteria as $value) {
-                $idealPositif = pow($value->nilai - $solusiIdealPositif['nilai'], 2);
-                $dataPositif = [
-                    'nilai' => $idealPositif,
-                    'kriteria_id' => $value->kriteria_id,
-                    'alternatif_id' => $value->alternatif_id,
-                ];
-                $this->topsisServices->simpanIdealPositif($dataPositif);
+        // Dapatkan nilai maksimum dan minimum beserta alternatif_id-nya
+        $maxItem = $solusiIdealKriteria->sortByDesc('nilai')->first();
+        $minItem = $solusiIdealKriteria->sortBy('nilai')->first();
 
-                $idealNegatif = pow($value->nilai - $solusiIdealNegatif['nilai'], 2);
-                $dataNegatif = [
-                    'nilai' => $idealNegatif,
-                    'kriteria_id' => $value->kriteria_id,
-                    'alternatif_id' => $value->alternatif_id,
-                ];
-                $this->topsisServices->simpanIdealNegatif($dataNegatif);
-            }
-        }
+        // Simpan satu baris Ideal Positif (nilai maksimum)
+        $dataPositif = [
+            'nilai' => $maxItem->nilai,
+            'kriteria_id' => $maxItem->kriteria_id,
+            'alternatif_id' => $maxItem->alternatif_id,
+        ];
+        $this->topsisServices->simpanIdealPositif($dataPositif);
+
+        // Simpan satu baris Ideal Negatif (nilai minimum)
+        $dataNegatif = [
+            'nilai' => $minItem->nilai,
+            'kriteria_id' => $minItem->kriteria_id,
+            'alternatif_id' => $minItem->alternatif_id,
+        ];
+        $this->topsisServices->simpanIdealNegatif($dataNegatif);
     }
+}
+
 
     public function hitungSolusiIdeal()
     {
