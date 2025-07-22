@@ -77,7 +77,7 @@
                 </div>
             </div>
 
-            {{-- Tabel Matriks Keputusan --}}
+            <!-- {{-- Tabel Matriks Keputusan --}}
             <div class="relative flex flex-col min-w-0 mb-5 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                 <div class="flex flex-row items-center justify-between p-6 pb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <h6>Matriks Keputusan <span class="text-greenPrimary">(X)</span></h6>
@@ -100,7 +100,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div> -->
 
             {{-- Tabel Matriks Normalisasi --}}
             <div class="relative flex flex-col min-w-0 mb-5 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
