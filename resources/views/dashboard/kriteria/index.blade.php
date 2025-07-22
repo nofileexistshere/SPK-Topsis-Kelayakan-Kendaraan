@@ -12,7 +12,7 @@
                             Tambah {{ $judul }}
                         </label>
                     @else
-                        <button for="add_button" class="inline-block px-3 py-2 font-bold text-center text-white rounded-lg text-sm ease-soft-in shadow-soft-md bg-gradient-to-br from-greenPrimary to-greenPrimary/80 opacity-50 shadow-soft-md" @readonly(true)>
+                        <button for="add_button" class="cursor-pointer inline-block px-3 py-2 font-bold text-center text-white rounded-lg text-sm ease-soft-in shadow-soft-md bg-gradient-to-br from-greenPrimary to-greenPrimary/80 shadow-soft-md hover:shadow-soft-xs active:opacity-85 hover:scale-102 transition-all" @readonly(true)>
                             <i class="ri-add-fill"></i>
                             Tambah {{ $judul }}
                         </button>

@@ -8,7 +8,7 @@
                         document.write(new Date().getFullYear() + ",");
                     </script>
                     made with <i class="ri-heart-fill text-black-500"></i> by
-                    <strong>Guntur</strong>
+                    <strong>Guntur Sahadi</strong>
                 </div>
             </div>
         </div>

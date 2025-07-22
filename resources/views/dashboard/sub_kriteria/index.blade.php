@@ -14,31 +14,33 @@
                             </label>
                         </div>
                         <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-                            <table id="{{ 'tabel_data_' . $item['kriteria'] }}" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-                                <thead>
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th>Nilai</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($item['sub_kriteria'] as $subKriteria)
-                                        <tr>
-                                            <td>{{ $subKriteria['nama'] }}</td>
-                                            <td>{{ $subKriteria['nilai'] }}</td>
-                                            <td class="flex gap-x-3">
+                            <table id="{{ 'tabel_data_' . $item['kriteria'] }}" class="stripe hover text-center align-middle w-full border border-black rounded-lg" style="width:100%; padding-top: 1em; padding-bottom: 1em;">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="text-center align-middle border border-black px-4 py-2">Nama</th>
+                                    <th class="text-center align-middle border border-black px-4 py-2">Nilai</th>
+                                    <th class="text-center align-middle border border-black px-4 py-2">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($item['sub_kriteria'] as $subKriteria)
+                                    <tr class="text-center align-middle hover:bg-gray-50">
+                                        <td class="border border-black px-4 py-2">{{ $subKriteria['nama'] }}</td>
+                                        <td class="border border-black px-4 py-2">{{ $subKriteria['nilai'] }}</td>
+                                        <td class="border border-black px-4 py-2">
+                                            <div class="flex justify-center items-center gap-x-3">
                                                 <label for="edit_button" class="cursor-pointer" onclick="return edit_button('{{ $subKriteria['id'] }}')">
                                                     <i class="ri-pencil-line text-xl"></i>
                                                 </label>
                                                 <button onclick="return delete_button('{{ $subKriteria['id'] }}', '{{ $item['kriteria'] }}', '{{ $subKriteria['nama'] }}');">
                                                     <i class="ri-delete-bin-line text-xl"></i>
                                                 </button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                         </div>
                     </div>
                 @endforeach

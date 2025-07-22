@@ -7,11 +7,14 @@
             <div class="mb-5 flex gap-x-1">
                 <form action="{{ 'hitung_topsis' }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <button type="submit" class="btn btn-active btn-accent text-black hover:bg-accent/95 hover:border-accent/95">Hitung TOPSIS</button>
+                    <button type="submit" class="cursor-pointer inline-block px-3 py-2 font-bold text-center text-white rounded-lg text-sm ease-soft-in shadow-soft-md bg-gradient-to-br bg-black bg-black shadow-soft-md hover:shadow-soft-xs active:opacity-85 hover:scale-102 transition-all">
+                    <i class="ri-file-pdf-line"></i>
+                    Hitung Topsis
+                </button>
                 </form>
                 <form action="{{ 'pdf_topsis' }}" method="post" enctype="multipart/form-data" target="_blank">
                     @csrf
-                    <button type="submit" class="btn btn-active btn-error text-black hover:bg-error/95 hover:border-error/95">
+                    <button type="submit" class="cursor-pointer inline-block px-3 py-2 font-bold text-center text-white rounded-lg text-sm ease-soft-in shadow-soft-md bg-gradient-to-br bg-black bg-black shadow-soft-md hover:shadow-soft-xs active:opacity-85 hover:scale-102 transition-all">
                         <i class="ri-file-pdf-line"></i>
                         Export PDF
                     </button>
