@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('alternatif', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("objek_id")->constrained("objek", "id");
+            $table->foreignId("objek_id")->constrained("objek", "id")->onDelete('cascade');
+            $table->string("nomor_polisi")->nullable();
+            $table->string("nama_kendaraan")->nullable();
             $table->timestamps();
         });
     }

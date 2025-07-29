@@ -15,40 +15,33 @@ class ObjekService
 
     public function getAll()
     {
-        $data = $this->objekRepository->getAll();
-        return $data;
+        return $this->objekRepository->getAll();
     }
 
     public function simpanPostData($request)
     {
         $data = $request->validated();
-
-        $data = $this->objekRepository->simpan($data);
-        return $data;
+        return $this->objekRepository->simpan($data);
     }
 
     public function ubahGetData($request)
     {
-        $data = $this->objekRepository->getDataById($request->id);
-        return $data;
+        return $this->objekRepository->getDataById($request->id);
     }
 
     public function perbaruiPostData($request)
     {
-        $validate = $request->validated();
-        $data = [true, $this->objekRepository->perbarui($request->id, $validate)];
-        return $data;
+        $data = $request->validated();
+        return [true, $this->objekRepository->perbarui($request->id, $data)];
     }
 
     public function hapusPostData($request)
     {
-        $data = $this->objekRepository->hapus($request);
-        return $data;
+        return $this->objekRepository->hapus($request);
     }
 
     public function import($request)
     {
-        $data = $this->objekRepository->import($request);
-        return $data;
+        return $this->objekRepository->import($request);
     }
 }

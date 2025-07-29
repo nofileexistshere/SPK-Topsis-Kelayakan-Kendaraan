@@ -17,44 +17,37 @@ class ObjekRepository
 
     public function getAll()
     {
-        $data = $this->objek->orderBy('created_at', 'asc')->get();
-        return $data;
+        return $this->objek->orderBy('created_at', 'asc')->get();
     }
 
     public function simpan($data)
     {
-        $data = $this->objek->create($data);
-        return $data;
+        return $this->objek->create($data);
     }
 
     public function getDataById($id)
     {
-        $data = $this->objek->where('id', $id)->firstOrFail();
-        return $data;
+        return $this->objek->where('id', $id)->firstOrFail();
     }
 
     public function perbarui($id, $data)
     {
-        $data = $this->objek->where('id', $id)->update([
-            "nama" => $data['nama'],
+        return $this->objek->where('id', $id)->update([
+            'nama'           => $data['nama'],
+            'kendaraan'      => $data['kendaraan'] ?? null,
+            'nomor_polisi'   => $data['nomor_polisi'] ?? null,
+            'nama_kendaraan' => $data['nama_kendaraan'] ?? null,
         ]);
-        return $data;
     }
 
     public function hapus($id)
     {
-        $data = $this->objek->where('id', $id)->delete();
-        return $data;
+        return $this->objek->where('id', $id)->delete();
     }
 
     public function import($data)
     {
-        // menangkap file excel
         $file = $data->file('import_data');
-
-        // import data
-        $import = Excel::import(new ObjekImport, $file);
-
-        return $import;
+        return Excel::import(new ObjekImport, $file);
     }
 }

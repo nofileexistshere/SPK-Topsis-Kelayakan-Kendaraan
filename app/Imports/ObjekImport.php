@@ -23,9 +23,12 @@ class ObjekImport implements ToModel, WithStartRow, WithHeadingRow
     public function model(array $row)
     {
         return new Objek([
-            'nama' => $row['objek'],
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'nama'           => $row['objek'],
+            'kendaraan'      => $row['kendaraan'] ?? null,
+            'nomor_polisi'   => $row['nomor_polisi'] ?? null,
+            'nama_kendaraan' => $row['nama_kendaraan'] ?? null,
+            'created_at'     => Carbon::now(),
+            'updated_at'     => Carbon::now(),
         ]);
     }
 }

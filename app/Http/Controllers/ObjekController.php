@@ -18,30 +18,25 @@ class ObjekController extends Controller
     public function index()
     {
         $judul = "Objek";
-
         $data = $this->objekService->getAll();
 
-        return view('dashboard.objek.index', [
-            "judul" => $judul,
-            "data" => $data,
-        ]);
+        return view('dashboard.objek.index', compact('judul', 'data'));
     }
 
     public function simpan(ObjekRequest $request)
     {
-        $data = $this->objekService->simpanPostData($request);
+        $this->objekService->simpanPostData($request);
         return redirect('dashboard/objek')->with('berhasil', "Data berhasil disimpan!");
     }
 
     public function ubah(Request $request)
     {
-        $data = $this->objekService->ubahGetData($request);
-        return $data;
+        return $this->objekService->ubahGetData($request);
     }
 
     public function perbarui(ObjekRequest $request)
     {
-        $data = $this->objekService->perbaruiPostData($request);
+        $this->objekService->perbaruiPostData($request);
         return redirect('dashboard/objek')->with('berhasil', "Data berhasil diperbarui!");
     }
 
@@ -49,22 +44,19 @@ class ObjekController extends Controller
     {
         try {
             $this->objekService->hapusPostData($request->id);
+            return redirect('dashboard/objek')->with('berhasil', "Data berhasil dihapus!");
         } catch (\Throwable $th) {
-            return abort(400);
+            return abort(400, "Gagal menghapus data.");
         }
-        return redirect('dashboard/objek')->with('berhasil', "Data berhasil diperbarui!");
     }
 
     public function import(Request $request)
     {
-        // validasi
         $request->validate([
             'import_data' => 'required|mimes:xls,xlsx'
         ]);
 
         $this->objekService->import($request);
-
-        // alihkan halaman kembali
-        return redirect('dashboard/objek')->with('berhasil', "Data berhasil di import!");
+        return redirect('dashboard/objek')->with('berhasil', "Data berhasil diimport!");
     }
 }

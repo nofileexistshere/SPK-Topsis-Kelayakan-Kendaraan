@@ -11,11 +11,15 @@ class Alternatif extends Model
 
     protected $table = "alternatif";
     protected $primaryKey = "id";
-    public $incrementing = "true";
-    // protected $keyType = "string";
-    public $timestamps = "true";
+    public $incrementing = true;
+    public $timestamps = true;
+
     protected $fillable = [
         "objek_id",
+        "nama",             // <- Tambahkan ini
+        "kendaraan",        // <- Tambahkan ini
+        "nomor_polisi",     // <- Tambahkan ini
+        "nama_kendaraan",   // <- Tambahkan ini
     ];
 
     public function objek()

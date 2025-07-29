@@ -45,7 +45,7 @@
                 <div class="{{ Request::is('dashboard/objek') ? 'bg-gradient-to-tl from-backgroundSecondary to-greenSecondary text-white' : '' }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                     <i class="ri-car-fill text-greenPrimary"></i>
                 </div>
-                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Data Kendaraan</span>
+                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Data Kendaraan <br>(objek)</span>
             </a>
         </li>
 
@@ -59,7 +59,7 @@
                 <div class="{{ Request::is('dashboard/alternatif') ? 'bg-gradient-to-tl from-backgroundSecondary to-greenSecondary text-white' : '' }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                     <i class="ri-tools-fill text-greenPrimary"></i>
                 </div>
-                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Kelola Data Kendaraan</span>
+                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Kelola Data Kendaraan <br>(Alternatif)</span>
             </a>
         </li>
         <li class="mt-0.5 w-full">

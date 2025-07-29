@@ -21,7 +21,10 @@
                     <table id="tabel_data" class="stripe hover" style="width:100%; padding-top: 1em; padding-bottom: 1em;">
                         <thead>
                             <tr>
-                                <th>Nama</th>
+                                <th>Nama Kendaraan</th>
+                                <th>Jenis Kendaraan</th>
+                                <th>Nomor Polisi</th>
+                                <th>Merk Kendaraan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -29,6 +32,9 @@
                             @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $item->nama }}</td>
+                                    <td>{{ $item->kendaraan }}</td>
+                                    <td>{{ $item->nomor_polisi }}</td>
+                                    <td>{{ $item->nama_kendaraan }}</td>
                                     <td class="flex gap-x-3">
                                         <label for="edit_button" class="cursor-pointer" onclick="return edit_button('{{ $item->id }}')">
                                             <i class="ri-pencil-line text-xl"></i>
@@ -53,14 +59,31 @@
                             @csrf
                             <div class="form-control w-full max-w-xs">
                                 <label class="label">
-                                    <span class="label-text">Nama</span>
+                                    <span class="label-text">Nama Kendaraan</span>
                                 </label>
-                                <input type="text" name="nama" placeholder="Type here" class="input input-bordered w-full max-w-xs text-dark" value="{{ old('nama') }}" required />
+                                <input type="text" name="nama" class="input input-bordered w-full max-w-xs text-dark" value="{{ old('nama') }}" required />
+                                @error('nama')<span class="label-text-alt text-error">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="form-control w-full max-w-xs">
                                 <label class="label">
-                                    @error('nama')
-                                        <span class="label-text-alt text-error">{{ $message }}</span>
-                                    @enderror
+                                    <span class="label-text">Jenis Kendaraan</span>
                                 </label>
+                                <input type="text" name="kendaraan" class="input input-bordered w-full text-dark" value="{{ old('kendaraan') }}" required />
+                                @error('kendaraan')<span class="label-text-alt text-error">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="form-control w-full max-w-xs">
+                                <label class="label">
+                                    <span class="label-text">Nomor Polisi</span>
+                                </label>
+                                <input type="text" name="nomor_polisi" class="input input-bordered w-full text-dark" value="{{ old('nomor_polisi') }}" required />
+                                @error('nomor_polisi')<span class="label-text-alt text-error">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="form-control w-full max-w-xs">
+                                <label class="label">
+                                    <span class="label-text">Merk Kendaraan</span>
+                                </label>
+                                <input type="text" name="nama_kendaraan" class="input input-bordered w-full text-dark" value="{{ old('nama_kendaraan') }}" required />
+                                @error('nama_kendaraan')<span class="label-text-alt text-error">{{ $message }}</span>@enderror
                             </div>
                         <div class="modal-action">
                             <button type="submit" class="btn btn-success">Simpan</button>
@@ -78,18 +101,34 @@
                     <form action="{{ route('objek.perbarui') }}" method="post" enctype="multipart/form-data">
                         <h3 class="font-bold text-lg">Ubah {{ $judul }}: <span class="text-greenPrimary" id="title_form"><span class="loading loading-dots loading-md"></span></span></h3>
                             @csrf
-                            <input type="text" name="id" hidden />
+                            <input type="hidden" name="id" />
                             <div class="form-control w-full max-w-xs">
                                 <label class="label">
-                                    <span class="label-text">Nama</span>
-                                    <span class="label-text-alt" id="loading_edit1"></span>
+                                    <span class="label-text">Nama Kendaraan</span>
                                 </label>
-                                <input type="text" name="nama" placeholder="Type here" class="input input-bordered w-full text-dark" required />
+                                <input type="text" name="nama" class="input input-bordered w-full text-dark" required />
+                                @error('nama')<span class="label-text-alt text-error">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="form-control w-full max-w-xs">
                                 <label class="label">
-                                    @error('nama')
-                                        <span class="label-text-alt text-error">{{ $message }}</span>
-                                    @enderror
+                                    <span class="label-text">Jenis Kendaraan</span>
                                 </label>
+                                <input type="text" name="kendaraan" class="input input-bordered w-full text-dark" required />
+                                @error('kendaraan')<span class="label-text-alt text-error">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="form-control w-full max-w-xs">
+                                <label class="label">
+                                    <span class="label-text">Nomor Polisi</span>
+                                </label>
+                                <input type="text" name="nomor_polisi" class="input input-bordered w-full text-dark" required />
+                                @error('nomor_polisi')<span class="label-text-alt text-error">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="form-control w-full max-w-xs">
+                                <label class="label">
+                                    <span class="label-text">Merk Kendaraan</span>
+                                </label>
+                                <input type="text" name="nama_kendaraan" class="input input-bordered w-full text-dark" required />
+                                @error('nama_kendaraan')<span class="label-text-alt text-error">{{ $message }}</span>@enderror
                             </div>
                         <div class="modal-action">
                             <button type="submit" class="btn btn-success">Perbarui</button>
@@ -112,11 +151,7 @@
                                     <span class="label-text">Import File</span>
                                 </label>
                                 <input type="file" name="import_data" class="file-input file-input-bordered w-full max-w-xs" required />
-                                <label class="label">
-                                    @error('import_data')
-                                        <span class="label-text-alt text-error">{{ $message }}</span>
-                                    @enderror
-                                </label>
+                                @error('import_data')<span class="label-text-alt text-error">{{ $message }}</span>@enderror
                             </div>
                         <div class="modal-action">
                             <button type="submit" class="btn btn-success">Import</button>
@@ -131,122 +166,64 @@
 @endsection
 
 @section('js')
-    <script>
-        // Tabel
-        $(document).ready(function() {
-            $('#tabel_data').DataTable({
-                responsive: true,
-                order: [],
-            })
-            .columns.adjust()
-            .responsive.recalc();
+<script>
+    $(document).ready(function() {
+        $('#tabel_data').DataTable({
+            responsive: true,
+            order: [],
+        }).columns.adjust().responsive.recalc();
+    });
+
+    function edit_button(id) {
+        let loading = `<span class="loading loading-dots loading-md text-greenPrimary"></span>`;
+        $("#title_form").html(loading);
+
+        $.ajax({
+            type: "get",
+            url: "{{ route('objek.ubah') }}",
+            data: { _token: "{{ csrf_token() }}", id: id },
+            success: function (data) {
+                let items = Object.values(data);
+                $("#title_form").html(items[1]);
+                $("input[name='id']").val(items[0]);
+                $("input[name='nama']").val(items[1]);
+                $("input[name='kendaraan']").val(items[2]);
+                $("input[name='nomor_polisi']").val(items[3]);
+                $("input[name='nama_kendaraan']").val(items[4]);
+            }
         });
+    }
 
-        @if (session()->has('berhasil'))
-            Swal.fire({
-                title: 'Berhasil',
-                text: '{{ session('berhasil') }}',
-                icon: 'success',
-                confirmButtonColor: '#6419E6',
-                confirmButtonText: 'OK',
-            });
-        @endif
-
-        @if (session()->has('gagal'))
-            Swal.fire({
-                title: 'Gagal',
-                text: '{{ session('gagal') }}',
-                icon: 'error',
-                confirmButtonColor: '#6419E6',
-                confirmButtonText: 'OK',
-            });
-        @endif
-
-        @if ($errors->any())
-            Swal.fire({
-                title: 'Gagal',
-                text: @foreach ($errors->all() as $error) '{{ $error }}' @endforeach,
-                icon: 'error',
-                confirmButtonColor: '#6419E6',
-                confirmButtonText: 'OK',
-            })
-        @endif
-
-        function edit_button(id) {
-            // Loading effect start
-            let loading = `<span class="loading loading-dots loading-md text-greenPrimary"></span>`;
-            $("#title_form").html(loading);
-            $("#loading_edit1").html(loading);
-
-            $.ajax({
-                type: "get",
-                url: "{{ route('objek.ubah') }}",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    "id": id
-                },
-                success: function (data) {
-                    // console.log(data);
-                    let items = [];
-                    $.each(data, function(key, val) {
-                        items.push(val);
-                    });
-
-                    $("#title_form").html(`${items[1]}`);
-                    $("input[name='id']").val(items[0]);
-                    $("input[name='nama']").val(items[1]);
-
-                    // Loading effect end
-                    loading = "";
-                    $("#loading_edit1").html(loading);
-                }
-            });
-        }
-
-        function delete_button(id, nama) {
-            Swal.fire({
-                title: 'Apakah Anda yakin?',
-                html:
-                    "<p>Data tidak dapat dipulihkan kembali!</p>" +
-                    "<div class='divider'></div>" +
-                    "<b>Data: " + nama + "</b>",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#6419E6',
-                cancelButtonColor: '#F87272',
-                confirmButtonText: 'Hapus Data!',
-                cancelButtonText: 'Batal',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: "post",
-                        url: "{{ route('objek.hapus') }}",
-                        data: {
-                            "_token": "{{ csrf_token() }}",
-                            "id": id
-                        },
-                        success: function (response) {
-                            console.log(response);
-                            Swal.fire({
-                                title: 'Data berhasil dihapus!',
-                                icon: 'success',
-                                confirmButtonColor: '#6419E6',
-                                confirmButtonText: 'OK'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    location.reload();
-                                }
-                            });
-                        },
-                        error: function (response) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Data gagal dihapus!',
-                            })
-                        }
-                    });
-                }
-            })
-        }
-    </script>
+    function delete_button(id, nama) {
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+            html: "<p>Data tidak dapat dipulihkan kembali!</p><div class='divider'></div><b>Data: " + nama + "</b>",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#6419E6',
+            cancelButtonColor: '#F87272',
+            confirmButtonText: 'Hapus Data!',
+            cancelButtonText: 'Batal',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "post",
+                    url: "{{ route('objek.hapus') }}",
+                    data: { _token: "{{ csrf_token() }}", id: id },
+                    success: function () {
+                        Swal.fire({
+                            title: 'Data berhasil dihapus!',
+                            icon: 'success',
+                            confirmButtonColor: '#6419E6',
+                            confirmButtonText: 'OK'
+                        }).then(() => location.reload());
+                    },
+                    error: function () {
+                        Swal.fire({ icon: 'error', title: 'Data gagal dihapus!' });
+                    }
+                });
+            }
+        });
+    }
+</script>
 @endsection

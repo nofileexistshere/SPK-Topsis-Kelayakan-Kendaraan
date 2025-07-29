@@ -24,7 +24,10 @@ class ObjekRequest extends FormRequest
     public function rules()
     {
         return [
-            "nama" => "required|string|max:255",
+            'nama'           => 'required|string|max:255',
+            'kendaraan'      => 'required|string|max:255',
+            'nomor_polisi'   => 'required|string|max:20|regex:/^[A-Z]{1,2}\s?[0-9]{1,4}\s?[A-Z]{1,3}$/',
+            'nama_kendaraan' => 'required|string|max:255',
         ];
     }
 }

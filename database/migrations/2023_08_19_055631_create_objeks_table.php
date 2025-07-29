@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('objek', function (Blueprint $table) {
             $table->id();
-            $table->string("nama");
+            $table->string('nama');              // nama pemilik/objek
+            $table->string('kendaraan');         // jenis kendaraan
+            $table->string('nomor_polisi');      // kolom tambahan
+            $table->string('nama_kendaraan');    // kolom tambahan
             $table->timestamps();
         });
     }

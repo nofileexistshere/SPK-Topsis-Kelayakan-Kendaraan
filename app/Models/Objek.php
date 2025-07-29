@@ -11,11 +11,14 @@ class Objek extends Model
 
     protected $table = "objek";
     protected $primaryKey = "id";
-    public $incrementing = "true";
-    // protected $keyType = "string";
-    public $timestamps = "true";
+    public $incrementing = true;
+    public $timestamps = true;
+
     protected $fillable = [
-        "nama",
+        'nama',
+        'kendaraan',
+        'nomor_polisi',
+        'nama_kendaraan',
     ];
 
     public function alternatif()

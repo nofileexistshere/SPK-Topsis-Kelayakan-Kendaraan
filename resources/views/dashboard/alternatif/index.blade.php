@@ -15,22 +15,28 @@
                     <table id="tabel_data" class="stripe hover" style="width:100%; padding-top: 1em; padding-bottom: 1em;">
                         <thead>
                             <tr>
-                                <th>Nama</th>
+                                <th>Nama Kendaraan</th>
+                                <th>Jenis Kendaraan</th>
+                                <th>Nomor Polisi</th>
+                                <th>Merk Kendaraan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $item)
-                                <tr>
-                                    <td>{{ $item->objek->nama }}</td>
-                                    <td class="flex gap-x-3">
-                                        <button onclick="return delete_button('{{ $item->id }}', '{{ $item->objek->nama }}');">
-                                            <i class="ri-delete-bin-line text-xl"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
+                        @foreach ($data as $item)
+                            <tr>
+                                <td>{{ $item->objek->nama }}</td>
+                                <td>{{ $item->objek->kendaraan ?? '-' }}</td>
+                                <td>{{ $item->objek->nomor_polisi ?? '-' }}</td>
+                                <td>{{ $item->objek->nama_kendaraan ?? '-' }}</td>
+                                <td class="flex gap-x-3">
+                                    <button onclick="return delete_button('{{ $item->id }}', '{{ $item->objek->nama }}');">
+                                        <i class="ri-delete-bin-line text-xl"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                     </table>
                 </div>
             </div>
@@ -41,27 +47,26 @@
                 <div class="modal-box">
                     <form action="{{ route('alternatif.simpan') }}" method="post" enctype="multipart/form-data">
                         <h3 class="font-bold text-lg">Tambah {{ $judul }}</h3>
-                            @csrf
-                            <div class="form-control w-full max-w-xs">
-                                <label class="label">
-                                    <span class="label-text">Pilih Objek</span>
-                                </label>
-                                <select class="select select-bordered text-dark" name="objek_id[]" id="objek_id" multiple="multiple">
-                                    {{-- <option disabled selected>Pilih Objek!</option> --}}
-                                    @foreach ($objek as $item)
-                                        @if (old('objek_id') == $item->id)
-                                            <option value="{{ $item->id }}" selected>{{ $item->nama }}</option>
-                                        @else
-                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                                <label class="label">
-                                    @error('objek_id')
-                                        <span class="label-text-alt text-error">{{ $message }}</span>
-                                    @enderror
-                                </label>
-                            </div>
+                        @csrf
+                        <div class="form-control w-full max-w-xs">
+                            <label class="label">
+                                <span class="label-text">Pilih Objek</span>
+                            </label>
+                            <select class="select select-bordered text-dark" name="objek_id[]" id="objek_id" multiple="multiple">
+                                @foreach ($objek as $item)
+                                    @if (old('objek_id') == $item->id)
+                                        <option value="{{ $item->id }}" selected>{{ $item->nama }}</option>
+                                    @else
+                                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            <label class="label">
+                                @error('objek_id')
+                                    <span class="label-text-alt text-error">{{ $message }}</span>
+                                @enderror
+                            </label>
+                        </div>
                         <div class="modal-action">
                             <button type="submit" class="btn btn-success">Simpan</button>
                             <label for="add_button" class="btn">Batal</label>
