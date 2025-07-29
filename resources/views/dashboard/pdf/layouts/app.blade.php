@@ -6,9 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $judul }}</title>
 
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/logo.jpg') }}" />
-    <link rel="icon" type="image/png" href="{{ asset('img/logo.jpg') }}" />
-
     <style>
         .judul-laporan {
             text-align: center;

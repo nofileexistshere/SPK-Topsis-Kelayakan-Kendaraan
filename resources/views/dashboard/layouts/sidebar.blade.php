@@ -3,7 +3,7 @@
         <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer ri-close-line text-slate-400 xl:hidden" sidenav-close></i>
         <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap text-dark" href="{{ route('dashboard') }}">
             <img src="{{ asset('img/logo.jpg') }}" class="inline h-full max-w-full max-h-12 rounded-full transition-all duration-200 ease-nav-brand" alt="main_logo" />
-            <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand">SPK TOPSIS</span>
+            <span class="ml-3 font-semibold transition-all duration-200 ease-nav-brand">Kendaraan TOPSIS</span>
         </a>
     </div>
 
