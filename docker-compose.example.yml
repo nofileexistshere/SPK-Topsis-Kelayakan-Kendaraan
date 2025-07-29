@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: your_app
+    ports:
+      - "2025:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_HOST= "Your Host" #Maybe Local Host
+      - DB_PORT=3306
+      - DB_DATABASE="Your Database"
+      - DB_USERNAME="Your Username"
+      - DB_PASSWORD="Your Password"
+
+  db:
+    image: mysql:8.3
+    container_name: mysql_db
+    restart: unless-stopped
+    ports:
+      - "3307:3306" # Post to public port
+    environment:
+      MYSQL_DATABASE: "Your Database"
+      MYSQL_USER: "Your Username"
+      MYSQL_PASSWORD: "Your Password"
+      MYSQL_ROOT_PASSWORD: "Your Password Root"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

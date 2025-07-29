@@ -45,7 +45,7 @@
                 <div class="{{ Request::is('dashboard/objek') ? 'bg-gradient-to-tl from-backgroundSecondary to-greenSecondary text-white' : '' }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                     <i class="ri-car-fill text-greenPrimary"></i>
                 </div>
-                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Data Kendaraan <br>(objek)</span>
+                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Data Kendaraan <br>(Objek)</span>
             </a>
         </li>
 
