@@ -4,11 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Topsis') }}</title>
-
         <link rel="apple-touch-icon" sizes="1080x1080" href="{{ asset('img/logo.jpg') }}" />
         <link rel="icon" type="image/png" href="{{ asset('img/logo.jpg') }}" />
+
+        <title>{{ config('app.name', 'Kendaraan | TOPSIS') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
