@@ -1,6 +1,7 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    <br>
+    <div class="mb-4 text-sm text-gray-100">
+        {{ __('Jika lupa password, silahkan masukin email yang sudah didaftarkan sebelumnya') }}
     </div>
 
     <!-- Session Status -->
@@ -22,4 +23,5 @@
             </x-primary-button>
         </div>
     </form>
+    <br>
 </x-guest-layout>
