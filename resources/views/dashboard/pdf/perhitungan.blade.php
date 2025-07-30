@@ -168,12 +168,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($idealPositif->unique("alternatif_id") as $item)
+                            @foreach ($idealPositif->groupBy('alternatif_id') as $alternatifId => $items)
                                 <tr>
-                                    <td>{{ $item->nama_objek }}</td>
-                                    @foreach ($idealPositif->where("alternatif_id", $item->alternatif_id) as $value)
+                                    <td>{{ $items->first()->nama_objek }}</td>
+                                    @foreach ($idealPositif->unique('kriteria_id') as $kriteria)
+                                        @php
+                                            $value = $items->firstWhere(function($v) use ($kriteria) {
+                                                return (string)$v->kriteria_id === (string)$kriteria->kriteria_id;
+                                            });
+                                        @endphp
                                         <td>
-                                            {{ number_format($value->nilai, 6) }}
+                                            {{ $value ? number_format($value->nilai, 6) : '' }}
                                         </td>
                                     @endforeach
                                 </tr>
@@ -199,12 +204,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($idealNegatif->unique("alternatif_id") as $item)
+                            @foreach ($idealNegatif->groupBy('alternatif_id') as $alternatifId => $items)
                                 <tr>
-                                    <td>{{ $item->nama_objek }}</td>
-                                    @foreach ($idealNegatif->where("alternatif_id", $item->alternatif_id) as $value)
+                                    <td>{{ $items->first()->nama_objek }}</td>
+                                    @foreach ($idealNegatif->unique('kriteria_id') as $kriteria)
+                                        @php
+                                            $value = $items->firstWhere(function($v) use ($kriteria) {
+                                                return (string)$v->kriteria_id === (string)$kriteria->kriteria_id;
+                                            });
+                                        @endphp
                                         <td>
-                                            {{ number_format($value->nilai, 6) }}
+                                            {{ $value ? number_format($value->nilai, 6) : '' }}
                                         </td>
                                     @endforeach
                                 </tr>
