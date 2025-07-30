@@ -22,6 +22,8 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>Nilai</th>
+                                <th>Target</th>
+                                <th>Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,6 +31,7 @@
                                 <tr>
                                     <td>{{ $item->nama_objek }}</td>
                                     <td>{{ round($item->nilai, 3) }}</td>
+                                    <td>0.5</td> 
                                 </tr>
                             @endforeach
                         </tbody>
