@@ -50,14 +50,15 @@ php artisan key:generate
 php artisan migrate --seed
 
 # Jalankan server lokal
+npm run build
 php artisan serve
 ```
 
 ## 🔐 Akun Demo
 
-| Role  | Email            | Password |
-| ----- | ---------------- | -------- |
-| Admin | admin@telkom.com | 12345678 |
+| Role  | Email               | Password |
+| ----- | ------------------- | -------- |
+| Admin | testuser@telkom.com | 12345678 |
 
 ## 🖥️ Fitur Aplikasi
 
