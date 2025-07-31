@@ -28,7 +28,7 @@ class SubKriteriaStoreRequest extends FormRequest
         return [
             "kode" => "required|string|max:255",
             "nama" => "required|string|max:255",
-            "nilai" => "required|numeric|min:0|max:99999",
+            "nilai" => "required|numeric|min:0|max:1000000",
             "kriteria_id" => "required|numeric",
         ];
     }

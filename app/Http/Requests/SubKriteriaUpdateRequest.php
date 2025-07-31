@@ -26,7 +26,7 @@ class SubKriteriaUpdateRequest extends FormRequest
     {
         return [
             "nama" => "required|string|max:255",
-            "nilai" => "required|numeric|min:0|max:9",
+            "nilai" => "required|numeric|min:0|max:1000000",
         ];
     }
 }

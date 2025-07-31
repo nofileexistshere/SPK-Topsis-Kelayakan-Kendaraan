@@ -61,7 +61,7 @@ class KriteriaService
     public function perbaruiPostData($request)
     {
         $cekBobot = $request['bobot'] + $this->getSumBobot()->total_bobot - $this->kriteriaRepository->getDataById($request->id)->bobot;
-        if ($cekBobot > 1) {
+        if ($cekBobot > 1.5) {
             return $data = [false, "Jumlah maksimal keseluruhan bobot yaitu 1!"];
         }
         
