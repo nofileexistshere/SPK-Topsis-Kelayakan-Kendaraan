@@ -16,7 +16,7 @@
 <body class="font-lato antialiased font-normal text-base leading-default bg-backgroundPrimary text-greenPrimary scrollbar-thin scrollbar-thumb-greenPrimary scrollbar-track-greenPrimary/60 scrollbar-thumb-rounded-full hover:scrollbar-thumb-greenPrimary/80 transition-all">
     @include('dashboard.layouts.sidebar')
 
-    <main class="ease-soft-in-out xl:ml-68.5 relative h-screen rounded-xl transition-all duration-200">
+    <main class="ease-soft-in-out xl:ml-68.5 relative h-screen rounded-xl transition-all duration-200 bg-backgroundPrimary overflow-auto">
         @include('dashboard.layouts.navbar')
         <div class="w-full px-6 py-6 mx-auto bg-backgroundPrimary">
             @yield('container')
