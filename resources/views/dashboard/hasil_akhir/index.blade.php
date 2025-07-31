@@ -32,6 +32,7 @@
                                     <td>{{ $item->nama_objek }}</td>
                                     <td>{{ round($item->nilai, 3) }}</td>
                                     <td>0.5</td> 
+                                    <td>{{ $item->keterangan }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
