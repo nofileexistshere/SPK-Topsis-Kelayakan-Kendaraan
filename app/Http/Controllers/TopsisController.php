@@ -23,6 +23,15 @@ class TopsisController extends Controller
         $judul = "Hasil Akhir";
         $hasilTopsis = $this->topsisServices->getHasilTopsis();
 
+        $target = 0.5;
+        foreach ($hasilTopsis as $item) {
+            if ($item->nilai < $target) {
+                $item->keterangan = 'Tidak Layak';
+            } else {
+                $item->keterangan = 'Layak';
+            }
+        }
+
         return view('dashboard.hasil_akhir.index', [
             'judul' => $judul,
             'hasilTopsis' => $hasilTopsis,
