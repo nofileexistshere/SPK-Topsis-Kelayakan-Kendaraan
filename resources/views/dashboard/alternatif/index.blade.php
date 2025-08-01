@@ -57,7 +57,7 @@
                                     @if (old('objek_id') == $item->id)
                                         <option value="{{ $item->id }}" selected>{{ $item->nama }}</option>
                                     @else
-                                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->nomor_polisi }}</option>
                                     @endif
                                 @endforeach
                             </select>
