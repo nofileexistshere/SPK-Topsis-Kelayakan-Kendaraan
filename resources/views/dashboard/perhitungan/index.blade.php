@@ -239,7 +239,7 @@
                     <tbody>
                         @foreach ($solusiIdealPositif as $item)
                         <tr>
-                            <td>{{ $item->nama_objek }}</td>
+                            <td>D+</td>
                             <td>{{ round($item->nilai, 10) }}</td>
                         </tr>
                         @endforeach
@@ -264,7 +264,7 @@
                     <tbody>
                         @foreach ($solusiIdealNegatif as $item)
                         <tr>
-                            <td>{{ $item->nama_objek }}</td>
+                            <td>D-</td>
                             <td>{{ round($item->nilai, 10) }}</td>
                         </tr>
                         @endforeach
