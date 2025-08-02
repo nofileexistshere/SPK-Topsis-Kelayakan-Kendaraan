@@ -56,7 +56,7 @@
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <p class="mb-0 font-semibold leading-normal text-sm">Objek</p>
+                                <p class="mb-0 font-semibold leading-normal text-sm">Data Kendaraan</p>
                                 <h5 class="mb-0 font-bold">
                                     {{ $objek }}
                                 </h5>
@@ -79,7 +79,7 @@
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <p class="mb-0 font-semibold leading-normal text-sm">Alternatif</p>
+                                <p class="mb-0 font-semibold leading-normal text-sm">Kelola Data Kendaraan</p>
                                 <h5 class="mb-0 font-bold">
                                     {{ $alternatif }}
                                 </h5>
