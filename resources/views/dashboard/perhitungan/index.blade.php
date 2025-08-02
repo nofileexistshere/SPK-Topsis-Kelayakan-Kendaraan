@@ -237,9 +237,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($solusiIdealPositif as $item)
+                        @foreach ($solusiIdealPositif as $index => $item)
                         <tr>
-                            <td>D+</td>
+                            <td>D{{$index + 1}}+</td>
                             <td>{{ round($item->nilai, 10) }}</td>
                         </tr>
                         @endforeach
@@ -262,9 +262,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($solusiIdealNegatif as $item)
+                        @foreach ($solusiIdealNegatif as $index => $item)
                         <tr>
-                            <td>D-</td>
+                            <td>D{{$index + 1}}-</td>
                             <td>{{ round($item->nilai, 10) }}</td>
                         </tr>
                         @endforeach
