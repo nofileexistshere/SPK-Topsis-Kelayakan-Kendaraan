@@ -252,11 +252,16 @@ class TopsisRepository
         $data = DB::table('hasil_solusi_topsis as hst')
             ->join('alternatif as a', 'a.id', 'hst.alternatif_id')
             ->join('objek as o', 'o.id', 'a.objek_id')
-            ->select('hst.*', 'o.nama as nama_objek')
+            ->select(
+                'hst.*',
+                'o.nama as nama_objek',
+                'o.nomor_polisi' // tambahkan ini untuk ambil nomor polisi
+            )
             ->orderBy('hst.id', 'asc')->get();
 
         return $data;
     }
+
     public function getHasilTopsisAlternatif($alternatif_id)
     {
         $data = DB::table('hasil_solusi_topsis')->where('alternatif_id', $alternatif_id)->first();

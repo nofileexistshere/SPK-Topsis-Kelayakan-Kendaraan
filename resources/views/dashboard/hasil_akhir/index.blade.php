@@ -21,6 +21,7 @@
                         <thead>
                             <tr>
                                 <th>Nama</th>
+                                <th>Nomor Polisi</th>
                                 <th>Nilai</th>
                                 <th>Target</th>
                                 <th>Keterangan</th>
@@ -30,6 +31,7 @@
                             @foreach ($hasilTopsis as $item)
                                 <tr>
                                     <td>{{ $item->nama_objek }}</td>
+                                    <td>{{ $item->nomor_polisi }}</td>
                                     <td>{{ round($item->nilai, 3) }}</td>
                                     <td>0.5</td> 
                                     <td>{{ $item->keterangan }}</td>

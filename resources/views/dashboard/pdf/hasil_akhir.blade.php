@@ -12,28 +12,39 @@
                     <h2>Hasil Perhitungan TOPSIS</h2>
                 </div>
                 <div id='recipients' class="rounded bg-white p-8 shadow">
-                    <table border="0" cellpadding="0" cellspacing="0" style="width:100%; padding-top: 1em; padding-bottom: 1em;">
+                    <table border="0" cellpadding="0" cellspacing="0" style="width:100%; padding-top: 1em; padding-bottom: 1em; border-collapse: collapse;">
                         <thead>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Nilai</th>
+                            <tr style="background-color: #4CAF50; color: white;">
+                                <th style="border-bottom:1px solid #ddd; text-align:center; padding:8px;">Nama</th>
+                                <th style="border-bottom:1px solid #ddd; text-align:center; padding:8px;">Nomor Polisi</th>
+                                <th style="border-bottom:1px solid #ddd; text-align:center; padding:8px;">Nilai</th>
+                                <th style="border-bottom:1px solid #ddd; text-align:center; padding:8px;">Target</th>
+                                <th style="border-bottom:1px solid #ddd; text-align:center; padding:8px;">Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $target = 0.5;
+                                $layak = 0;
+                                $tidakLayak = 0;
+                            @endphp
                             @foreach ($hasilTopsis as $item)
-                                <tr>
-                                    <td>{{ $item->nama_objek }}</td>
-                                    <td>{{ round($item->nilai, 3) }}</td>
+                                @php
+                                    $keterangan = $item->nilai >= $target ? 'Layak' : 'Tidak Layak';
+                                    if ($keterangan === 'Layak') $layak++;
+                                    else $tidakLayak++;
+                                @endphp
+                                <tr style="background-color: {{ $loop->even ? '#f2f2f2' : 'white' }};">
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ $item->nama_objek }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ $item->nomor_polisi }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ round($item->nilai, 3) }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ $target }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ $keterangan }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-            </div>
-
-            <div>
-                <h2>Simpulan</h2>
-                <p>Berdasarkan tabel dari penilaian perhitungan TOPSIS yang dapat dijadikan rekomendasi alternatif, maka didapatkan alternatif dengan nilai tertinggi yaitu: <span style="font-weight: bold;">{{ $hasilTopsis->first()->nama_objek }}</span> dengan nilai <span style="font-weight: bold;">{{ round($hasilTopsis->first()->nilai, 3) }}</span></p>
             </div>
         </div>
     </div>
