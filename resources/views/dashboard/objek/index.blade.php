@@ -226,4 +226,40 @@
         });
     }
 </script>
+
+@if (session('berhasil'))
+<script>
+    Swal.fire({
+        title: 'Berhasil!',
+        text: '{{ session('berhasil') }}',
+        icon: 'success',
+        confirmButtonColor: '#6419E6',
+        confirmButtonText: 'OK'
+    });
+</script>
+@endif
+
+@if (session('gagal'))
+<script>
+    Swal.fire({
+        title: 'Gagal!',
+        text: '{{ session('gagal') }}',
+        icon: 'error',
+        confirmButtonColor: '#F87272',
+        confirmButtonText: 'OK'
+    });
+</script>
+@endif
+
+@if ($errors->any())
+<script>
+    Swal.fire({
+        title: 'Gagal!',
+        html: `{!! implode('<br>', $errors->all()) !!}`,
+        icon: 'error',
+        confirmButtonColor: '#F87272',
+        confirmButtonText: 'OK'
+    });
+</script>
+@endif
 @endsection

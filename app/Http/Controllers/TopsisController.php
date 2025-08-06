@@ -227,40 +227,61 @@ class TopsisController extends Controller
     }
 }
 
-
     public function hitungSolusiIdeal()
     {
-        $jarakIdealPositif = $this->topsisServices->getIdealPositif();
-        $jarakIdealNegatif = $this->topsisServices->getIdealNegatif();
+        $matriksY = $this->topsisServices->getMatriksY();
+        $idealPositif = $this->topsisServices->getIdealPositif();
+        $idealNegatif = $this->topsisServices->getIdealNegatif();
 
-        foreach ($jarakIdealPositif as $item) {
-            $jarakIdealPositifSi = $jarakIdealPositif->where('alternatif_id', $item->alternatif_id);
-            $nilaiPositifSi = 0;
+        // Dapatkan daftar alternatif unik
+        $alternatifs = $matriksY->unique('alternatif_id');
+        $kriterias = $matriksY->unique('kriteria_id');
 
-            foreach ($jarakIdealPositifSi as $value) {
-                $nilaiPositifSi += $value->nilai;
+        foreach ($alternatifs as $alt) {
+            $jarakPositifSi = 0;
+            $jarakNegatifSi = 0;
+
+            foreach ($kriterias as $krit) {
+                // Ambil nilai Yij untuk alternatif ini dan kriteria ini
+                $nilaiY = $matriksY->where('alternatif_id', $alt->alternatif_id)
+                                ->where('kriteria_id', $krit->kriteria_id)
+                                ->first();
+
+                if (!$nilaiY) {
+                    abort(500, "Data matriks Y tidak lengkap untuk alternatif ID {$alt->alternatif_id} pada kriteria ID {$krit->kriteria_id}.");
+                }
+
+                // Ambil nilai ideal positif & negatif untuk kriteria ini
+                $idealP = $idealPositif->where('kriteria_id', $krit->kriteria_id)->first();
+                $idealN = $idealNegatif->where('kriteria_id', $krit->kriteria_id)->first();
+
+                if (!$idealP || !$idealN) {
+                    abort(500, "Data ideal positif/negatif tidak ditemukan untuk kriteria ID {$krit->kriteria_id}.");
+                }
+
+                // Hitung selisih jarak kuadrat ke ideal positif & negatif
+                $jarakPositifSi += pow($nilaiY->nilai - $idealP->nilai, 2);
+                $jarakNegatifSi += pow($nilaiY->nilai - $idealN->nilai, 2);
             }
-            $data = [
-                'nilai' => sqrt($nilaiPositifSi),
-                'alternatif_id' => $item->alternatif_id,
-            ];
-            $this->topsisServices->simpanSolusiIdealPositif($data);
-        }
 
-        foreach ($jarakIdealNegatif as $item) {
-            $jarakIdealNegatifSi = $jarakIdealNegatif->where('alternatif_id', $item->alternatif_id);
-            $nilaiNegatifSi = 0;
+            // Hitung akar jarak
+            $sqrtPositif = sqrt($jarakPositifSi);
+            $sqrtNegatif = sqrt($jarakNegatifSi);
 
-            foreach ($jarakIdealNegatifSi as $value) {
-                $nilaiNegatifSi += $value->nilai;
-            }
-            $data = [
-                'nilai' => sqrt($nilaiNegatifSi),
-                'alternatif_id' => $item->alternatif_id,
-            ];
-            $this->topsisServices->simpanSolusiIdealNegatif($data);
+            // Simpan jarak ideal positif
+            $this->topsisServices->simpanSolusiIdealPositif([
+                'nilai' => $sqrtPositif,
+                'alternatif_id' => $alt->alternatif_id,
+            ]);
+
+            // Simpan jarak ideal negatif
+            $this->topsisServices->simpanSolusiIdealNegatif([
+                'nilai' => $sqrtNegatif,
+                'alternatif_id' => $alt->alternatif_id,
+            ]);
         }
     }
+
 
     public function hitungHasil()
     {

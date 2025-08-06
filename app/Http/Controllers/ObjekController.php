@@ -50,13 +50,13 @@ class ObjekController extends Controller
         }
     }
 
-    public function import(Request $request)
-    {
-        $request->validate([
-            'import_data' => 'required|mimes:xls,xlsx'
-        ]);
+    // public function import(Request $request)
+    // {
+    //     $request->validate([
+    //         'import_data' => 'required|mimes:xls,xlsx'
+    //     ]);
 
-        $this->objekService->import($request);
-        return redirect('dashboard/objek')->with('berhasil', "Data berhasil diimport!");
-    }
+    //     $this->objekService->import($request);
+    //     return redirect('dashboard/objek')->with('berhasil', "Data berhasil diimport!");
+    // }
 }

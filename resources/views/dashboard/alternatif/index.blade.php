@@ -80,95 +80,91 @@
 @endsection
 
 @section('js')
-    <script>
-        // Tabel
-        $(document).ready(function() {
-            $('#tabel_data').DataTable({
-                responsive: true,
-                order: [],
-            })
-            .columns.adjust()
-            .responsive.recalc();
+<script>
+    // Tabel dan Select2
+    $(document).ready(function () {
+        $('#tabel_data').DataTable({
+            responsive: true,
+            order: [],
+        }).columns.adjust().responsive.recalc();
 
-            $("#objek_id").select2({
-                placeholder: "Select",
-                allowClear: true
-            });
+        $("#objek_id").select2({
+            placeholder: "Select",
+            allowClear: true
         });
+    });
 
-        @if (session()->has('berhasil'))
-            Swal.fire({
-                title: 'Berhasil',
-                text: '{{ session('berhasil') }}',
-                icon: 'success',
-                confirmButtonColor: '#6419E6',
-                confirmButtonText: 'OK',
-            });
-        @endif
+    // SweetAlert session flash
+    @if (session('berhasil'))
+        Swal.fire({
+            title: 'Berhasil!',
+            text: '{{ session('berhasil') }}',
+            icon: 'success',
+            confirmButtonColor: '#6419E6',
+            confirmButtonText: 'OK'
+        });
+    @endif
 
-        @if (session()->has('gagal'))
-            Swal.fire({
-                title: 'Gagal',
-                text: '{{ session('gagal') }}',
-                icon: 'error',
-                confirmButtonColor: '#6419E6',
-                confirmButtonText: 'OK',
-            });
-        @endif
+    @if (session('gagal'))
+        Swal.fire({
+            title: 'Gagal!',
+            text: '{{ session('gagal') }}',
+            icon: 'error',
+            confirmButtonColor: '#6419E6',
+            confirmButtonText: 'OK'
+        });
+    @endif
 
-        @if ($errors->any())
-            Swal.fire({
-                title: 'Gagal',
-                text: @foreach ($errors->all() as $error) '{{ $error }}' @endforeach,
-                icon: 'error',
-                confirmButtonColor: '#6419E6',
-                confirmButtonText: 'OK',
-            })
-        @endif
+    @if ($errors->any())
+        Swal.fire({
+            title: 'Gagal!',
+            html: `{!! implode('<br>', $errors->all()) !!}`,
+            icon: 'error',
+            confirmButtonColor: '#6419E6',
+            confirmButtonText: 'OK'
+        });
+    @endif
 
-        function delete_button(id, nama) {
-            Swal.fire({
-                title: 'Apakah Anda yakin?',
-                html:
-                    "<p>Data tidak dapat dipulihkan kembali!</p>" +
-                    "<div class='divider'></div>" +
-                    "<b>Data: " + nama + "</b>",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#6419E6',
-                cancelButtonColor: '#F87272',
-                confirmButtonText: 'Hapus Data!',
-                cancelButtonText: 'Batal',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: "post",
-                        url: "{{ route('alternatif.hapus') }}",
-                        data: {
-                            "_token": "{{ csrf_token() }}",
-                            "id": id
-                        },
-                        success: function (response) {
-                            Swal.fire({
-                                title: 'Data berhasil dihapus!',
-                                icon: 'success',
-                                confirmButtonColor: '#6419E6',
-                                confirmButtonText: 'OK'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    location.reload();
-                                }
-                            });
-                        },
-                        error: function (response) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Data gagal dihapus!',
-                            });
-                        }
-                    });
-                }
-            })
-        }
-    </script>
+    // Fungsi hapus
+    function delete_button(id, nama) {
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+            html:
+                "<p>Data tidak dapat dipulihkan kembali!</p>" +
+                "<div class='divider'></div>" +
+                "<b>Data: " + nama + "</b>",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#6419E6',
+            cancelButtonColor: '#F87272',
+            confirmButtonText: 'Hapus Data!',
+            cancelButtonText: 'Batal',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "post",
+                    url: "{{ route('alternatif.hapus') }}",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "id": id
+                    },
+                    success: function () {
+                        Swal.fire({
+                            title: 'Data berhasil dihapus!',
+                            icon: 'success',
+                            confirmButtonColor: '#6419E6',
+                            confirmButtonText: 'OK'
+                        }).then(() => location.reload());
+                    },
+                    error: function () {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Data gagal dihapus!',
+                        });
+                    }
+                });
+            }
+        });
+    }
+</script>
 @endsection
