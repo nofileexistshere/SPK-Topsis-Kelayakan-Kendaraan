@@ -43,7 +43,7 @@
     <div class="min-h-screen flex flex-col items-center justify-center">
         <div class="mb-6">
             <a href="/">
-                <img src="{{ asset('img/logo_telkom.jpg') }}" alt="Logo" class="w-20 h-20 ">
+                <img src="{{ asset('img/logo_telkom.png') }}" alt="Logo" class="w-20 h-20 ">
             </a>
         </div>
 

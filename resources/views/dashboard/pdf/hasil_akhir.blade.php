@@ -1,6 +1,17 @@
 @extends("dashboard.pdf.layouts.app")
 
 @section("container")
+    <div style="display: flex; align-items: center; gap: 1em; margin-bottom: 1.5em;">
+        <div style="flex: 0 0 80px;">
+            <img src="{{ asset('img/logo_telkom.png') }}" alt="Logo" style="width: 80px;">
+        </div>
+        <div style="flex: 1; text-align: center;">
+            <h2 style="margin: 0; font-size: 18px;">PT. Telkom Akses</h2>
+            <p style="margin: 2px 0; font-size: 12px;">Jalan Kaliabang Tengah No. 1, RT.6/RW.4, Kaliabang Tengah, Bekasi Utara</p>
+            <p style="margin: 2px 0; font-size: 12px;">Telepon: (021) 89190800 | Email: info@telkomakses.co.id</p>
+        </div>
+    </div>
+    <hr style="border: 1px solid black; margin-bottom: 2em;">
     <div class="-mx-3 flex flex-wrap">
         <div class="w-full max-w-full flex-none px-3 table-pdf">
             <div class="mb-5 judul-laporan">
