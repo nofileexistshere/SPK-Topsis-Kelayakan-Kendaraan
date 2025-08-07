@@ -3,7 +3,7 @@
 @section("container")
     <div style="display: flex; align-items: center; gap: 1em; margin-bottom: 1.5em;">
         <div style="flex: 0 0 80px;">
-            <img src="{{ asset('img/logo_telkom.png') }}" alt="Logo" style="width: 80px;">
+            <img src="data:image/png;base64,{{ $logo }}" style="width: 80px;" alt="Logo">
         </div>
         <div style="flex: 1; text-align: center;">
             <h2 style="margin: 0; font-size: 18px;">PT. Telkom Akses</h2>
@@ -25,7 +25,7 @@
                 <div id='recipients' class="rounded bg-white p-8 shadow">
                     <table border="0" cellpadding="0" cellspacing="0" style="width:100%; padding-top: 1em; padding-bottom: 1em; border-collapse: collapse;">
                         <thead>
-                            <tr style="background-color: #4CAF50; color: white;">
+                            <tr style="background-color: #CD5656; color: white;">
                                 <th style="border-bottom:1px solid #ddd; text-align:center; padding:8px;">Nama</th>
                                 <th style="border-bottom:1px solid #ddd; text-align:center; padding:8px;">Nomor Polisi</th>
                                 <th style="border-bottom:1px solid #ddd; text-align:center; padding:8px;">Nilai</th>

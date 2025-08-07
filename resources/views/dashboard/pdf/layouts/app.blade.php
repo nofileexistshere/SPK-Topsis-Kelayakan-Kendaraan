@@ -45,7 +45,7 @@
             font-size: 15px;
             font-weight: bold;
             color: white;
-            background-color: #617A55;
+            background-color: #CD5656;
             padding: 7px 10px;
             text-align: center;
         }

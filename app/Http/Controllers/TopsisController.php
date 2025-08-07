@@ -83,6 +83,8 @@ class TopsisController extends Controller
         $idealNegatif = $this->topsisServices->getIdealNegatif();
         $hasilTopsis = $this->topsisServices->getHasilTopsis();
 
+        $logo = base64_encode(file_get_contents(public_path('img/logo_telkom.png')));
+
         $pdf = PDF::setOptions(['defaultFont' => 'sans-serif'])->loadview('dashboard.pdf.perhitungan', [
             'judul' => $judul,
             'kriteria' => $kriteria,
@@ -95,6 +97,7 @@ class TopsisController extends Controller
             'solusiIdealPositif' => $solusiIdealPositif,
             'solusiIdealNegatif' => $solusiIdealNegatif,
             'hasilTopsis' => $hasilTopsis,
+            'logo' => $logo,
         ]);
 
         // return $pdf->download('laporan-penilaian.pdf');
@@ -106,9 +109,12 @@ class TopsisController extends Controller
         $judul = "Laporan Hasil Akhir";
         $hasilTopsis = $this->topsisServices->getHasilTopsis();
 
+        $logo = base64_encode(file_get_contents(public_path('img/logo_telkom.png')));
+        
         $pdf = PDF::setOptions(['defaultFont' => 'sans-serif'])->loadview('dashboard.pdf.hasil_akhir', [
             'judul' => $judul,
             'hasilTopsis' => $hasilTopsis,
+            'logo' => $logo,
         ]);
 
         // return $pdf->download('laporan-penilaian.pdf');

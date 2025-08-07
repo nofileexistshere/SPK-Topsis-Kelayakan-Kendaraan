@@ -3,7 +3,7 @@
 @section("container")
     <div style="display: flex; align-items: center; gap: 1em; margin-bottom: 1.5em;">
         <div style="flex: 0 0 80px;">
-            <img src="{{ asset('img/logo_telkom.png') }}" alt="Logo" style="width: 80px;">
+            <img src="data:image/png;base64,{{ $logo }}" style="width: 80px;" alt="Logo">
         </div>
         <div style="flex: 1; text-align: center;">
             <h2 style="margin: 0; font-size: 18px;">PT. Telkom Akses</h2>
