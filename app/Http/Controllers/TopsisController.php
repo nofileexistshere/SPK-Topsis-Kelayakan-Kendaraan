@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Services\TopsisService;
 use App\Http\Services\KriteriaService;
@@ -85,23 +86,26 @@ class TopsisController extends Controller
 
         $logo = base64_encode(file_get_contents(public_path('img/logo_telkom.png')));
 
-        $pdf = PDF::setOptions(['defaultFont' => 'sans-serif'])->loadview('dashboard.pdf.perhitungan', [
-            'judul' => $judul,
-            'kriteria' => $kriteria,
-            'penilaian' => $penilaian,
-            'matriksKeputusan' => $matriksKeputusan,
-            'matriksNormalisasi' => $matriksNormalisasi,
-            'matriksY' => $matriksY,
-            'idealPositif' => $idealPositif,
-            'idealNegatif' => $idealNegatif,
-            'solusiIdealPositif' => $solusiIdealPositif,
-            'solusiIdealNegatif' => $solusiIdealNegatif,
-            'hasilTopsis' => $hasilTopsis,
-            'logo' => $logo,
-        ]);
+        $pdf = PDF::setOptions(['defaultFont' => 'sans-serif'])
+            ->loadview('dashboard.pdf.perhitungan', [
+                'judul' => $judul,
+                'kriteria' => $kriteria,
+                'penilaian' => $penilaian,
+                'matriksKeputusan' => $matriksKeputusan,
+                'matriksNormalisasi' => $matriksNormalisasi,
+                'matriksY' => $matriksY,
+                'idealPositif' => $idealPositif,
+                'idealNegatif' => $idealNegatif,
+                'solusiIdealPositif' => $solusiIdealPositif,
+                'solusiIdealNegatif' => $solusiIdealNegatif,
+                'hasilTopsis' => $hasilTopsis,
+                'logo' => $logo,
+            ]);
 
-        // return $pdf->download('laporan-penilaian.pdf');
-        return $pdf->stream();
+        $tanggal = Carbon::now()->format('Y-m-d');
+        $filename = 'Laporan Hasil TOPSIS-' . $tanggal . '.pdf';
+
+        return $pdf->stream($filename);
     }
 
     public function pdf_hasil()
@@ -111,14 +115,17 @@ class TopsisController extends Controller
 
         $logo = base64_encode(file_get_contents(public_path('img/logo_telkom.png')));
         
-        $pdf = PDF::setOptions(['defaultFont' => 'sans-serif'])->loadview('dashboard.pdf.hasil_akhir', [
-            'judul' => $judul,
-            'hasilTopsis' => $hasilTopsis,
-            'logo' => $logo,
-        ]);
+        $pdf = PDF::setOptions(['defaultFont' => 'sans-serif'])
+            ->loadview('dashboard.pdf.hasil_akhir', [
+                'judul' => $judul,
+                'hasilTopsis' => $hasilTopsis,
+                'logo' => $logo,
+            ]);
 
-        // return $pdf->download('laporan-penilaian.pdf');
-        return $pdf->stream();
+        $tanggal = Carbon::now()->format('Y-m-d');
+        $filename = 'Laporan Hasil Akhir Topsis-' . $tanggal . '.pdf';
+
+        return $pdf->stream($filename);
     }
 
     public function hitungTopsis()

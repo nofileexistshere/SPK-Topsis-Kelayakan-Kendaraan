@@ -35,7 +35,7 @@
                         <tbody>
                             <tr>
                                 @foreach ($kriteria as $item)
-                                    <td>{{ $item->bobot }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ $item->bobot }}</td>
                                 @endforeach
                             </tr>
                         </tbody>
@@ -61,9 +61,9 @@
                         <tbody>
                             @foreach ($penilaian->unique("alternatif_id") as $item)
                                 <tr>
-                                    <td>{{ $item->alternatif->objek->nama }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ $item->alternatif->objek->nama }}</td>
                                     @foreach ($penilaian->where("alternatif_id", $item->alternatif_id) as $value)
-                                        <td>
+                                        <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">
                                             @if ($value->subKriteria != null)
                                                 {{ $value->subKriteria->nilai }}
                                             @endif
@@ -93,7 +93,7 @@
                         <tbody>
                             <tr>
                                 @foreach ($matriksKeputusan as $item)
-                                    <td>{{ round($item->nilai, 2) }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ round($item->nilai, 2) }}</td>
                                 @endforeach
                             </tr>
                         </tbody>
@@ -119,9 +119,9 @@
                         <tbody>
                             @foreach ($matriksNormalisasi->unique("alternatif_id") as $item)
                                 <tr>
-                                    <td>{{ $item->nama_objek }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ $item->nama_objek }}</td>
                                     @foreach ($matriksNormalisasi->where("alternatif_id", $item->alternatif_id) as $value)
-                                        <td>
+                                        <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">
                                             {{ round($value->nilai, 2) }}
                                         </td>
                                     @endforeach
@@ -150,9 +150,9 @@
                         <tbody>
                             @foreach ($matriksY->unique("alternatif_id") as $item)
                                 <tr>
-                                    <td>{{ $item->nama_objek }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ $item->nama_objek }}</td>
                                     @foreach ($matriksY->where("alternatif_id", $item->alternatif_id) as $value)
-                                        <td>
+                                        <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">
                                             {{ round($value->nilai, 3) }}
                                         </td>
                                     @endforeach
@@ -181,14 +181,14 @@
                         <tbody>
                             @foreach ($idealPositif->groupBy('alternatif_id') as $alternatifId => $items)
                                 <tr>
-                                    <td>{{ $items->first()->nama_objek }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ $items->first()->nama_objek }}</td>
                                     @foreach ($idealPositif->unique('kriteria_id') as $kriteria)
                                         @php
                                             $value = $items->firstWhere(function($v) use ($kriteria) {
                                                 return (string)$v->kriteria_id === (string)$kriteria->kriteria_id;
                                             });
                                         @endphp
-                                        <td>
+                                        <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">
                                             {{ $value ? number_format($value->nilai, 6) : '' }}
                                         </td>
                                     @endforeach
@@ -217,14 +217,14 @@
                         <tbody>
                             @foreach ($idealNegatif->groupBy('alternatif_id') as $alternatifId => $items)
                                 <tr>
-                                    <td>{{ $items->first()->nama_objek }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ $items->first()->nama_objek }}</td>
                                     @foreach ($idealNegatif->unique('kriteria_id') as $kriteria)
                                         @php
                                             $value = $items->firstWhere(function($v) use ($kriteria) {
                                                 return (string)$v->kriteria_id === (string)$kriteria->kriteria_id;
                                             });
                                         @endphp
-                                        <td>
+                                        <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">
                                             {{ $value ? number_format($value->nilai, 6) : '' }}
                                         </td>
                                     @endforeach
@@ -251,8 +251,8 @@
                         <tbody>
                             @foreach ($solusiIdealPositif as $item)
                                 <tr>
-                                    <td>{{ $item->nama_objek }}</td>
-                                    <td>{{ round($item->nilai, 3) }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ $item->nama_objek }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ round($item->nilai, 3) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -276,8 +276,8 @@
                         <tbody>
                             @foreach ($solusiIdealNegatif as $item)
                                 <tr>
-                                    <td>{{ $item->nama_objek }}</td>
-                                    <td>{{ round($item->nilai, 3) }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ $item->nama_objek }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ round($item->nilai, 3) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -301,12 +301,20 @@
                         <tbody>
                             @foreach ($hasilTopsis as $item)
                                 <tr>
-                                    <td>{{ $item->nama_objek }}</td>
-                                    <td>{{ round($item->nilai, 3) }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ $item->nama_objek }}</td>
+                                    <td style="border-bottom:1px solid #ddd; padding:8px; text-align:center;">{{ round($item->nilai, 3) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    {{-- Bagian tanda tangan --}}
+                    <div style="width: 100%; margin-top: 3em; text-align: right;">
+                        <p>Bekasi, {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}</p>
+                        <p style="margin-top: 4em; font-weight: bold; text-decoration: underline;">
+                            Guntur Sahadi
+                        </p>
+                        <p><em>Supervisor Technician</em</p>
+                    </div>
                 </div>
             </div>
 

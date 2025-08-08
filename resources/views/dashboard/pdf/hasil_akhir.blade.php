@@ -55,6 +55,14 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{-- Bagian tanda tangan --}}
+                    <div style="width: 100%; margin-top: 3em; text-align: right;">
+                        <p>Bekasi, {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}</p>
+                        <p style="margin-top: 4em; font-weight: bold; text-decoration: underline;">
+                            Guntur Sahadi
+                        </p>
+                        <p><em>Supervisor Technician</em></p>
+                    </div>
                 </div>
             </div>
         </div>
