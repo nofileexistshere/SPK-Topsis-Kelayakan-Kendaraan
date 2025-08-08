@@ -97,6 +97,8 @@ Route::group([
     Route::post('/pdf_hasil', [TopsisController::class, 'pdf_hasil'])->name('pdf_hasil');
     Route::post('/hitung_topsis', [TopsisController::class, 'hitungTopsis'])->name('hitung_topsis');
     Route::get('/hasil_akhir', [TopsisController::class, 'hasilAkhir'])->name('hasil_akhir');
+    Route::post('/dashboard/penilaian/export-pdf', [PenilaianController::class, 'exportPdf'])
+    ->name('penilaian.export.pdf');
 });
 
 require __DIR__.'/auth.php';
