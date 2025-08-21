@@ -92,4 +92,4 @@ Metode TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution
 
 ## 📃 Lisensi
 
-Proyek ini ditujukan untuk pengembangan internal atau penelitian akademik di PT Telkom Indihome. Untuk kolaborasi atau distribusi, silakan hubungi pengembang.
+Proyek ini ditujukan untuk pengembangan internal atau penelitian akademik di PT Telkom Akses. Untuk kolaborasi atau distribusi, silakan hubungi pengembang.
